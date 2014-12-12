@@ -50,6 +50,7 @@ int main(int argc, const char *argv[]){
       fputs(" ", fw);
   }
 
+  cout << e << "\n";
   cout << chave << "\n";
   cout << n << "\n";
 

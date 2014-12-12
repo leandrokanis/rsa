@@ -36,8 +36,12 @@ contudo
 coracao
 corpo
 cuja
+da
+das
 dar
 de
+do
+dos
 deixar
 depois
 desde
@@ -171,11 +175,13 @@ ser
 seria
 serra
 seu
+seus
 sido
 sobre
 somente
 sou
 sua
+suas
 tal
 talvez
 tambem
