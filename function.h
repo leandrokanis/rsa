@@ -5,7 +5,6 @@
 #include <iostream>
 using namespace std;
 
-
 unsigned long long int congruencia(unsigned long long int base, unsigned long long int expoente, unsigned long long int modulo) {
   base %= modulo;
   unsigned long long int resultado = 1;
