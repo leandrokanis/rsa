@@ -54,14 +54,13 @@ long Encriptar(long original, long e, long n){
 unsigned long long int Desencriptar(long encriptado, long chave, long n){	
 	return  congruencia(encriptado, chave, n);
 }
-string Digitalizar(long val){
-   
+
+string Digitalizar(long val){   
   string Result;
   ostringstream convert;
-  //convert << setfill('0') << setw(3) << val;
-  convert << val;
+  convert << setfill('0') << setw(9) << val;
+  //convert << val;
   Result = convert.str();
-
   return Result;
 }
 
