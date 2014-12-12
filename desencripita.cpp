@@ -1,4 +1,5 @@
 #include "function.h"
+#include "primos.h"
 
 /*	Algoritimo:
 
@@ -30,11 +31,7 @@ int main(int argc, const char *argv[]){
   unsigned long long int desencriptado=0;
   long e=0, chave=0;
 
-  long lista[5] = {43, 47, 53, 59, 61};
-
-
-for (int h = 0; h < 5; ++h){
-  for (int g = 0; g < 5; ++g){
+  //long lista[2000] = {43, 47, 53, 59, 61};
 
   string palavra[1000] = {};
   string dicionario[1000] = {};
@@ -64,15 +61,19 @@ for (int h = 0; h < 5; ++h){
       }
     }
 
-    
-    // primo1=lista[h];
-    // primo2=lista[g];
+for (int h = 0; h < 1653; ++h){
+  for (int g = 0; g < 1653; ++g){   
+    primo1=lista[h];
+    primo2=lista[g];
 
-    cout << "testanto com " << primo1 << " e " << primo2 << "\n";
+    for (int i = 0; i < 1000; ++i){
+      decifra[i] = "";
+      testadecifra[i] = "";
+      testainteira[i] = "";
+    }
+  
+  cout << "testanto com " << primo1 << " e " << primo2 << "\n";
 
-  primo1 = 53;
-  primo2 = 59;
-    
   // zera a contagem
   certo = 0;
 
@@ -113,19 +114,28 @@ for (int h = 0; h < 5; ++h){
     for (int j = 0; j < 100; j++){
 
       confere = dicionario[j].compare(testainteira[i]);
-      cout << confere << "\n\n\n\n";
 
       if(!confere){
-        cout << primo1 << " - " << primo2 << ": ";
-        cout << i << ": "<< testainteira[i] << ": " << dicionario[j] << "\n";
+        cout << testainteira[i] << "\n";
+        //cout << primo1 << " - " << primo2 << ": ";
+        //cout << i << ": "<< testainteira[i] << ": " << dicionario[j] << "\n";
         certo++;
+      if(certo==3)
         break;
       }
       if(certo==3)
         break;
     }
+      if(certo==3)
+        break;
   }
+      if(certo==3)
+        break;
 
+  } // end for g
+      if(certo==3)
+        break;
+} // end for h
 
   if(certo==3){
     cout << "chave encontrada" << "\n";
@@ -147,14 +157,10 @@ for (int h = 0; h < 5; ++h){
           decifra[i] = Desencriptar(Desdigitalizar(letra[i]), chave, n);
           fputs(decifra[i].c_str(), fdescriptografado);
       }
-          fputs( " " , fdescriptografado);
+          fputs(" ", fdescriptografado);
     }
-    break;
+  //  break;
   } // end if correto
-
-
-  } // end for g
-} // end for h
 
   fclose ( fdicionario );
   fclose ( fsaida );

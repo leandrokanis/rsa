@@ -12,8 +12,7 @@ int main(int argc, const char *argv[]){
   // apaga o conteúdo do arquivo de saída
   freopen(NULL, "w+", fw);
 
-  //long primo1 = 8969, primo2 = 13711;
-  long primo1 = 53, primo2 = 59;
+  long primo1 = 8969, primo2 = 13711;
   long n=0, totiente=0, original=0, encriptado=0;
   unsigned long long int desencriptado=0;
   long e=0, chave=0;
@@ -50,9 +49,11 @@ int main(int argc, const char *argv[]){
       fputs(" ", fw);
   }
 
-  cout << e << "\n";
-  cout << chave << "\n";
-  cout << n << "\n";
+  cout <<  "O texto foi encriptado com sucesso e salvo no arquivo saida.txt" "\n\n";
+
+  cout <<  "e: " << e << "\n";
+  cout <<  "chave privada: " << chave << "\n";
+  cout <<  "n: " <<  n << "\n";
 
   fclose ( fp );
   fclose ( fw );
