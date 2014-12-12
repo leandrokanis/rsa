@@ -1,8 +1,4 @@
-#include <iostream>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
-using namespace std;
+#include "function.h"
 
 /*	Algoritimo:
 
@@ -18,21 +14,33 @@ x escreve no arquivo de saída
 
 int main(int argc, const char *argv[]){
   
-  FILE *fp, *fw, *fdicionario;
+  FILE *fsaida, *fdescriptografado, *fdicionario;
   char ch, ch2;
   int confere;
-  int i=0, j=0;
-  fp = fopen ( "saida.txt", "r" );
+  int i=0, j=0, x=0, tamanho=0;
+  fsaida = fopen ( "saida.txt", "r" );
   fdicionario = fopen ( "dicionario.txt", "r" );
-  fw = fopen ( "decriptografado.txt", "a" ) ;
+  fdescriptografado = fopen ( "decriptografado.txt", "a" ) ;
+
+  // apaga o conteúdo do arquivo de saída
+  freopen(NULL, "w+", fdescriptografado);
+
+  //long primo1 = 8969, primo2 = 13711;
+  long primo1 = 53, primo2 = 59;
+  long n=0, chave=0;
+
+  // chaves
+  chave = 2011;
+  n = 3127;
 
   string palavra[1000];
   string dicionario[1000];
+  string decifra[1000];
 
 
   // separa cada palavra e coloca no array de strings palavra[]
   while (ch!=EOF) {
-    ch = fgetc(fp);
+    ch = fgetc(fsaida);
     if(ch != ' '){
 		  palavra[i] += ch;
     } else {
@@ -40,7 +48,24 @@ int main(int argc, const char *argv[]){
     }
   }
 
-  // TODO desencriptar a palavra
+  // DECIFRAGEM
+  // vare o arquivo
+  for (int x = 0; x < 620; ++x){
+    string letra[1000] = {};
+    tamanho = palavra[x].size();
+
+    // pega cada palavra
+    for (int i = 0; i < tamanho/9; ++i){
+
+      // pega cada letra
+      for (int j = 0; j < 9; ++j){
+        letra[i] += palavra[x][j+i*9];
+      }
+        decifra[i] = Desencriptar(Desdigitalizar(letra[i]), chave, n);
+        fputs(decifra[i].c_str(), fdescriptografado);
+    }
+        fputs( " " , fdescriptografado);
+  }
 
   // TODO comparar com dicionario
   //      
@@ -74,22 +99,10 @@ int main(int argc, const char *argv[]){
   //   }
   // }
 
-  // escrever no novo arquivo
-	for (int i = 0; i < 200; ++i){
-
-		fputs (dicionario[i].c_str(), fw);
-		fputs (" ", fw);
-	}
-
-  char letra;
-  cin >> letra;
-  cout << pow ( int(letra), 2);
-
-
 
   fclose ( fdicionario );
-  fclose ( fp );
-  fclose ( fw );
+  fclose ( fsaida );
+  fclose ( fdescriptografado );
   
   return 0;
 }

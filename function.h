@@ -1,8 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
 #include <iostream>
+#include <stdio.h>
+#include <climits>
+#include <cassert>
+#include <cstdlib>
+#include <string>
+#include <cstring>
+#include <sstream>
+#include <iomanip>
+using std::string;
 using namespace std;
 
 unsigned long long int congruencia(unsigned long long int base, unsigned long long int expoente, unsigned long long int modulo) {
@@ -55,6 +60,7 @@ unsigned long long int Desencriptar(long encriptado, long chave, long n){
 	return  congruencia(encriptado, chave, n);
 }
 
+// transforma de long para string
 string Digitalizar(long val){   
   string Result;
   ostringstream convert;
@@ -64,4 +70,7 @@ string Digitalizar(long val){
   return Result;
 }
 
-
+// transforma de string pra long
+unsigned long long int Desdigitalizar(string val){ 
+	return strtoull(val.c_str(), (char **)NULL, 10);
+}
